@@ -82,6 +82,7 @@ void main()
 	Line(y);
 
 	/////////////////////////////////////////////////////////
+	
 	const int k = 10;
 	char krr[k];
 	FillRand(krr, k);
@@ -117,7 +118,7 @@ void FillRand(double arr[], const int n, int minRand, int maxRand)
 	maxRand *= 100;
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % (maxRand - minRand) + minRand;
+		arr[i] = rand() % (maxRand - minRand) + minRand;  //Какой-то arithmetic overflow
 		arr[i] /= 100;
 	}
 }
@@ -134,7 +135,7 @@ void FillRand(float arr[], const int n, int minRand, int maxRand)
 	maxRand *= 100;
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % (maxRand - minRand) + minRand;
+		arr[i] = rand() % (maxRand - minRand) + minRand; // loss of data
 		arr[i] /= 100;
 	}
 }
@@ -235,7 +236,7 @@ double Sum(double arr[], const int n)
 	int sum = 0;
 	for (int i = 0; i < n; i++)
 	{
-		sum += arr[i];
+		sum += arr[i];   // loss of data
 	}
 	return sum;
 }
@@ -244,9 +245,9 @@ float Sum(float arr[], const int n)
 	int sum = 0;	
 	for (int i = 0; i < n; i++)
 	{
-		sum += arr[i];
+		sum += arr[i];  //loss of data
 	}
-	return sum;
+	return sum;  // loss of data
 }
 
 double Avg(int arr[], const int n)
@@ -381,4 +382,6 @@ void Sort(float arr[], const int n)  //Сортировка выбором (Sele
 ??? Avg      возвращает ср.арифметическое элементов массива
 minValueIn   возвращает минимальное значение эл. массива
 maxValueIn   возвращает максимальное значение эл. массива
-Sort         Сортирует массив*/
+Sort         Сортирует массив
+Перегрузить функции для всех типов данных
+*/
